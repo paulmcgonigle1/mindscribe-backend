@@ -215,7 +215,7 @@ STATIC_ROOT = tempfile.mkdtemp()
 # URL to use when referring to static files (in templates, etc.)
 STATIC_URL = "/static/"
 
-
+# updated buildpack
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "clientside", "dist"),
 ]
