@@ -96,6 +96,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # For development only, restrict this in producti
 #     },
 # }
 ROOT_URLCONF = "backend.serverside.urls"
+# updated
 
 TEMPLATES = [
     {
