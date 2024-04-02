@@ -5,14 +5,12 @@ from datetime import timedelta
 import sys
 import logging
 import tempfile
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
 import django_heroku
 import dj_database_url
 
 load_dotenv()
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
@@ -30,6 +28,26 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 ALLOWED_HOSTS = ["*"]
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+WSGI_APPLICATION = "serverside.wsgi.application"
+# print("Base DIR:", BASE_DIR)
+
+# Define where Django collects static files from (on `collectstatic`)
+STATIC_ROOT = os.path.join(BASE_DIR, "backend", "staticfiles")
+# STATIC_ROOT = tempfile.mkdtemp()
+
+# print("Static ROOT: ", STATIC_ROOT)
+# URL to use when referring to static files (in templates, etc.)
+STATIC_URL = "/static/"
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "clientside", "dist"),
+]
 
 
 # Application definition
@@ -200,25 +218,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-WSGI_APPLICATION = "serverside.wsgi.application"
-# print("Base DIR:", BASE_DIR)
-
-# Define where Django collects static files from (on `collectstatic`)
-STATIC_ROOT = os.path.join(BASE_DIR, "backend", "staticfiles")
-# STATIC_ROOT = tempfile.mkdtemp()
-
-# print("Static ROOT: ", STATIC_ROOT)
-# URL to use when referring to static files (in templates, etc.)
-STATIC_URL = "/static/"
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "clientside", "dist"),
-]
 
 # print("Static ROOT DIRS: ", STATICFILES_DIRS)
 
