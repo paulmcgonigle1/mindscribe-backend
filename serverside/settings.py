@@ -7,13 +7,7 @@ import logging
 import tempfile
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent.parent
-# Define BASE_DIR to point to the directory containing the settings file
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-while not os.path.exists(os.path.join(BASE_DIR, "clientside")) and not os.path.exists(
-    os.path.join(BASE_DIR, "backend")
-):
-    BASE_DIR = os.path.dirname(BASE_DIR)
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 import django_heroku
 import dj_database_url
@@ -214,7 +208,7 @@ WSGI_APPLICATION = "serverside.wsgi.application"
 # print("Base DIR:", BASE_DIR)
 
 # Define where Django collects static files from (on `collectstatic`)
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "backend", "staticfiles")
 # STATIC_ROOT = tempfile.mkdtemp()
 
 # print("Static ROOT: ", STATIC_ROOT)
