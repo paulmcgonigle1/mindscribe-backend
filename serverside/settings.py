@@ -204,17 +204,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 WSGI_APPLICATION = "serverside.wsgi.application"
+# print("Base DIR:", BASE_DIR)
 
 # Define where Django collects static files from (on `collectstatic`)
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, "backend", "staticfiles")
 
+# print("Static ROOT: ", STATIC_ROOT)
 # URL to use when referring to static files (in templates, etc.)
 STATIC_URL = "/static/"
 
 
 STATICFILES_DIRS = [
-    BASE_DIR / "clientside/dist",
+    os.path.join(BASE_DIR, "clientside", "dist"),
 ]
+# print("Static ROOT DIRS: ", STATICFILES_DIRS)
 
 # not sure about this here below
 
