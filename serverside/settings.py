@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from datetime import timedelta
 import sys
 import logging
+import tempfile
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -207,7 +208,8 @@ WSGI_APPLICATION = "serverside.wsgi.application"
 # print("Base DIR:", BASE_DIR)
 
 # Define where Django collects static files from (on `collectstatic`)
-STATIC_ROOT = os.path.join(BASE_DIR, "backend", "staticfiles")
+# STATIC_ROOT = os.path.join(BASE_DIR, "backend", "staticfiles")
+STATIC_ROOT = tempfile.mkdtemp()
 
 # print("Static ROOT: ", STATIC_ROOT)
 # URL to use when referring to static files (in templates, etc.)
